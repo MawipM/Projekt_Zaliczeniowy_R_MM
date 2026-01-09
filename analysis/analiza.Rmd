@@ -9,18 +9,16 @@ editor_options:
 
 ## Wstęp
 
-W tej sekcji zajmiemy się analizą zbioru danych `mpg`, który jest dostępny w pakiecie `ggplot2`.
-Zbiór ten zawiera dane o zużyciu paliwa dla popularnych modeli samochodów z lat 1999 i 2008.
+W tej sekcji zajmiemy się analizą zbioru danych `mpg`, który jest dostępny w pakiecie `ggplot2`. Zbiór ten zawiera dane o zużyciu paliwa dla popularnych modeli samochodów z lat 1999 i 2008.
 
 ### Wczytanie pakietów
 
 Na początku wczytujemy niezbędne biblioteki.
 
-```{r message=FALSE, warning=FALSE}
+```{r}
 library(tidyverse)
-```
+library(ggplot2)
 
-head(mpg)
 dane_auta <- mpg %>%
   mutate(spalanie_l100km = 235 / hwy)
 
@@ -33,21 +31,31 @@ wyniki <- auta_2008 %>%
   arrange(desc(srednie_spalanie))
 
 knitr::kable(wyniki, caption = "Średnie spalanie wg klasy auta")
+```
 
+```{r Wykres 1: Histogram spalania, message=FALSE, warning=FALSE}
 ggplot(auta_2008, aes(x = spalanie_l100km)) +
   geom_histogram(binwidth = 1, fill = "skyblue", color = "black") +
   labs(title = "Rozkład spalania paliwa",
        x = "Litry na 100 km",
        y = "Liczba aut") +
   theme_minimal()
-  
+```
+
+Komentarz: Najwięcej aut spala w przedziale 8-12 litrów na 100 km.
+
+```{r Wykers 2: Liczebność klas samochodów, message=FALSE, warning=FALSE}
 ggplot(auta_2008, aes(x = class)) +
   geom_bar(fill = "darkblue") +
   labs(title = "Liczba aut w poszczególnych klasach",
        x = "Klasa",
        y = "Liczba") +
   theme_minimal()
-  
+```
+
+Komentarz: W analizowanym roczniku dominuje klasa SUV.
+
+```{r Wykres 3: Zależność pojemności silnika od klasy}
 ggplot(auta_2008, aes(x = class, y = displ, fill = class)) +
   geom_boxplot() +
   labs(title = "Pojemność silnika a klasa auta",
@@ -55,4 +63,6 @@ ggplot(auta_2008, aes(x = class, y = displ, fill = class)) +
        y = "Pojemność silnika (litry)") +
   theme_minimal() +
   theme(legend.position = "none")
-  
+```
+
+Komentarz: Samochody typu SUV i pickup mają największe silniki (mediana ok. 5 litrów), podczas gdy auta kompaktowe mają zazwyczaj silniki mniejsze (ok. 2-3 litry).
