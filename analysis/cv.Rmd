@@ -1,0 +1,58 @@
+---
+title: "Curriculum Vitae"
+author: "Maciej Małecki"
+date: "2025-01-10"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Dane Podstawowe
+
+* **Imię i Nazwisko:** Maciej Małecki
+* **Adres e-mail:** maciej.malecki@kade.com.pl
+* **Status:** Student kierunku Informatyka i Inżynieria Danych
+
+---
+
+## Wykształcenie
+
+**[Rok rozpoczęcia] – 2023**
+:   **Uniwersytet Przyrodniczy w Poznaniu**
+    * Kierunek: Informatyka i Inżynieria Danych
+
+**[2019] – [2023]**
+:   **[III Liceum im. Cypriana Kamila Norwida w Koninie]**
+    * Profil: [politechniczny]
+
+---
+
+## Umiejętności
+
+### Języki programowania i narzędzia
+* **R:** Analiza danych, wizualizacja (ggplot2), przetwarzanie danych (dplyr).
+* **Python:** Podstawy składni, proste skrypty do automatyzacji.
+* **C++:** Znajomość algorytmów i struktur danych, programowanie strukturalne.
+* **C:** Znajomość algorytmów i struktur danych, programowanie strukturalne.
+* **C#:** Podstawy programowania obiektowego.
+
+
+### Języki obce
+* **Angielski:** [C1]
+* **Polski:** Ojczysty
+
+---
+
+## Doświadczenie i Projekty
+
+### Projekty Akademickie
+
+**1. Analiza rynku samochodowego (Projekt Zaliczeniowy)**
+* Stworzenie reprodukowalnego raportu w R.
+* Analiza czynników wpływających na spalanie paliwa (zbiór `mpg`).
+* Wizualizacja danych przy użyciu `ggplot2` (histogramy, boxploty).
+* Publikacja wyników przy użyciu `workflowr`.
+
+```{r, echo=FALSE}
+print(paste("CV wygenerowane automatycznie dnia:", Sys.Date()))
+```
