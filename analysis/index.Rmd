@@ -1,5 +1,5 @@
 ---
-title: "Home"
+title: "Strona Główna"
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
@@ -8,4 +8,22 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+Witaj na mojej stronie zaliczeniowej!
+
+### O mnie
+
+Nazywam się Maciej Małecki i jestem studentem kierunku Informatyka i Inżynieria Danych.
+Niniejszy projekt został przygotowany w ramach zaliczenia przedmiotu Programowanie w R.
+
+### Moja Uczelnia
+
+![](uczelnia.jpg)
+
+---
+
+### Informacje o projekcie
+
+Główne elementy projektu:
+1.  **CV** - moje doświadczenie i umiejętności.
+2.  **Analiza Danych** - praktyczne zastosowanie R (dplyr, ggplot2).
+3.  **Prezentacja** - moje pasje (wykonana w Quarto).
