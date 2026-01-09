@@ -1,0 +1,115 @@
+---
+title: "Moje Pasje: Droga, Dane i Wolność"
+author: "Maciej Małecki"
+format: 
+  revealjs:
+    theme: moon
+    transition: concave
+    slide-number: true
+editor: visual
+---
+
+## 1. O mnie
+
+Cześć!
+Jestem studentem, który wierzy, że najlepsze pomysły rodzą się w ruchu.
+
+Na co dzień zajmuję się analizą danych i kodem, ale moją prawdziwą naturę definiują trzy słowa:
+
+* **Prędkość** (Motoryzacja)
+* **Przestrzeń** (Podróże)
+* **Niezależność** (Caravaning)
+
+---
+
+## 2. Motoryzacja: Więcej niż maszyny
+
+Samochody to dla mnie nie tylko środek transportu. To inżynieryjne dzieła sztuki, które mają duszę.
+
+Fascynuje mnie ewolucja technologii: od surowego brzmienia klasycznych silników benzynowych, po ciszę i moment obrotowy nowoczesnych elektryków. Każde auto ma swój charakter i opowiada inną historię na drodze.
+
+---
+
+## 3. Co mówią dane o silnikach?
+
+Jako analityk, lubię czasem sprawdzić, czy moje odczucia z jazdy mają pokrycie w liczbach.
+
+Ciekawiła mnie relacja między wielkością samochodu a jego sercem – silnikiem. Czy w dobie "downsizingu" duże auta nadal mają duże pojemności?
+
+*(Spójrzmy na wykres wygenerowany w R)*
+
+---
+
+## 4. Wykres: Klasa auta a pojemność
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(ggplot2)
+library(tidyverse)
+
+# Filtrujemy dane dla czytelności
+dane_wykres <- mpg %>% filter(year == 2008)
+
+ggplot(dane_wykres, aes(x = class, y = displ, fill = class)) +
+  geom_boxplot() +
+  labs(title = "Pojemność silnika a klasa auta",
+       x = "Klasa pojazdu", 
+       y = "Pojemność (litry)") +
+  theme_dark() +
+  theme(legend.position = "none", 
+        text = element_text(size=14),
+        plot.background = element_rect(fill = "#222", color = NA),
+        panel.background = element_rect(fill = "#222", color = NA),
+        axis.text = element_text(color = "white"),
+        title = element_text(color = "white"))
+```
+
+---
+
+## 5. Podróże: Szukanie Horyzontu
+
+Kiedy zamykam laptopa, otwieram mapę.
+Podróże to dla mnie ucieczka od schematów.
+
+Nie lubię hoteli all-inclusive ani zorganizowanych wycieczek. Prawdziwa przygoda zaczyna się tam, gdzie kończy się asfalt, a GPS traci zasięg. Liczy się droga, a nie cel.
+
+---
+
+## 6. Ulubione kierunki
+
+*(Miejsce na Twoje zdjęcie - np. góry, morze lub droga)*
+
+![](https://www.eccoholiday.com/p/wp-content/uploads/2020/03/chorwacja-1.jpg)
+
+Każda wyprawa to nowa perspektywa i "reset" głowy, który pozwala wrócić na uczelnię z nową energią.
+
+---
+
+## 7. Caravaning: Dom jest tam, gdzie parkujesz
+
+To moja największa pasja odkąd pamiętam. Połączenie miłości do czterech kółek i potrzeby wolności.
+
+**Caravaning to:**
+* Kawa parzona o świcie z widokiem na jezioro.
+* Nocleg w miejscach, o których turyści nie mają pojęcia.
+* Minimalizm – zabierasz tylko to, co naprawdę potrzebne.
+
+---
+
+## 8. Vanlife w praktyce
+
+*(Miejsce na zdjęcie kampera, namiotu lub ogniska)*
+
+![](https://polskicaravaning.pl/img/kampery/2968-i-7057-eb_1.jpg)
+
+Moim marzeniem jest zbudowanie własnego kampera (DIY) i podróż dookoła Europy bez planu i biletu powrotnego.
+
+---
+
+## 9. Podsumowanie
+
+Dziękuję za uwagę!
+
+Mam nadzieję, że udało mi się pokazać Wam kawałek mojego świata – tego analogowego, pełnego kilometrów i wspomnień, oraz tego cyfrowego, opartego na danych.
+
+**Tu link do GitHuba:**
+[https://github.com/MawipM/Projekt_zaliczeniowy_MM](https://github.com/MawipM/Projekt_zaliczeniowy_MM)
