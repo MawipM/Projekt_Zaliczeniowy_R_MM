@@ -1,0 +1,58 @@
+---
+title: "Analiza Danych - Samochody"
+author: "Maciej Małecki"
+date: "2025-01-10"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Wstęp
+
+W tej sekcji zajmiemy się analizą zbioru danych `mpg`, który jest dostępny w pakiecie `ggplot2`.
+Zbiór ten zawiera dane o zużyciu paliwa dla popularnych modeli samochodów z lat 1999 i 2008.
+
+### Wczytanie pakietów
+
+Na początku wczytujemy niezbędne biblioteki.
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+head(mpg)
+dane_auta <- mpg %>%
+  mutate(spalanie_l100km = 235 / hwy)
+
+auta_2008 <- dane_auta %>%
+  filter(year == 2008)
+
+wyniki <- auta_2008 %>%
+  group_by(class) %>%
+  summarise(srednie_spalanie = mean(spalanie_l100km)) %>%
+  arrange(desc(srednie_spalanie))
+
+knitr::kable(wyniki, caption = "Średnie spalanie wg klasy auta")
+
+ggplot(auta_2008, aes(x = spalanie_l100km)) +
+  geom_histogram(binwidth = 1, fill = "skyblue", color = "black") +
+  labs(title = "Rozkład spalania paliwa",
+       x = "Litry na 100 km",
+       y = "Liczba aut") +
+  theme_minimal()
+  
+ggplot(auta_2008, aes(x = class)) +
+  geom_bar(fill = "darkblue") +
+  labs(title = "Liczba aut w poszczególnych klasach",
+       x = "Klasa",
+       y = "Liczba") +
+  theme_minimal()
+  
+ggplot(auta_2008, aes(x = class, y = displ, fill = class)) +
+  geom_boxplot() +
+  labs(title = "Pojemność silnika a klasa auta",
+       x = "Klasa",
+       y = "Pojemność silnika (litry)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+  
