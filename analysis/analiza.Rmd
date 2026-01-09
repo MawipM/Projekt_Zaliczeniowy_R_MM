@@ -15,10 +15,11 @@ W tej sekcji zajmiemy się analizą zbioru danych `mpg`, który jest dostępny w
 
 Na początku wczytujemy niezbędne biblioteki.
 
-```{r}
+```{r wczytanie_danych, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(ggplot2)
 
+# Przetwarzanie danych
 dane_auta <- mpg %>%
   mutate(spalanie_l100km = 235 / hwy)
 
@@ -33,7 +34,9 @@ wyniki <- auta_2008 %>%
 knitr::kable(wyniki, caption = "Średnie spalanie wg klasy auta")
 ```
 
-```{r Wykres 1: Histogram spalania, message=FALSE, warning=FALSE}
+### Wykres 1: Histogram spalania
+
+```{r wykres_histogram, message=FALSE, warning=FALSE}
 ggplot(auta_2008, aes(x = spalanie_l100km)) +
   geom_histogram(binwidth = 1, fill = "skyblue", color = "black") +
   labs(title = "Rozkład spalania paliwa",
@@ -42,9 +45,11 @@ ggplot(auta_2008, aes(x = spalanie_l100km)) +
   theme_minimal()
 ```
 
-Komentarz: Najwięcej aut spala w przedziale 8-12 litrów na 100 km.
+**Komentarz:** Najwięcej aut spala w przedziale 8-12 litrów na 100 km.
 
-```{r Wykers 2: Liczebność klas samochodów, message=FALSE, warning=FALSE}
+### Wykres 2: Liczebność klas samochodów
+
+```{r wykres_slupkowy, message=FALSE, warning=FALSE}
 ggplot(auta_2008, aes(x = class)) +
   geom_bar(fill = "darkblue") +
   labs(title = "Liczba aut w poszczególnych klasach",
@@ -53,9 +58,11 @@ ggplot(auta_2008, aes(x = class)) +
   theme_minimal()
 ```
 
-Komentarz: W analizowanym roczniku dominuje klasa SUV.
+**Komentarz:** W analizowanym roczniku dominuje klasa SUV.
 
-```{r Wykres 3: Zależność pojemności silnika od klasy}
+### Wykres 3: Zależność pojemności silnika od klasy
+
+```{r wykres_boxplot, message=FALSE, warning=FALSE}
 ggplot(auta_2008, aes(x = class, y = displ, fill = class)) +
   geom_boxplot() +
   labs(title = "Pojemność silnika a klasa auta",
@@ -65,4 +72,4 @@ ggplot(auta_2008, aes(x = class, y = displ, fill = class)) +
   theme(legend.position = "none")
 ```
 
-Komentarz: Samochody typu SUV i pickup mają największe silniki (mediana ok. 5 litrów), podczas gdy auta kompaktowe mają zazwyczaj silniki mniejsze (ok. 2-3 litry).
+**Komentarz:** Samochody typu SUV i pickup mają największe silniki (mediana ok. 5 litrów), podczas gdy auta kompaktowe mają zazwyczaj silniki mniejsze (ok. 2-3 litry).
