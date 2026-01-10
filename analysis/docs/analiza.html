@@ -334,13 +334,13 @@ div.tocify {
   <a href="index.html">Home</a>
 </li>
 <li>
+  <a href="cv.html">CV</a>
+</li>
+<li>
   <a href="analiza.html">Analiza</a>
 </li>
 <li>
-  <a href="about.html">About</a>
-</li>
-<li>
-  <a href="license.html">License</a>
+  <a href="prezentacja.html">Prezentacja</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -385,7 +385,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2026-01-09
+<strong>Last updated:</strong> 2026-01-10
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -516,15 +516,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomMawipMProjektzaliczeniowyMMtree554a95eaa70cfc0dc00abcdf89bfd5be6678b23atargetblank554a95ea">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomMawipMProjektzaliczeniowyMMtreec373e303c9ae0aae2dab4eba2f7353a57fca978ctargetblankc373e30a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/MawipM/Projekt_zaliczeniowy_MM/tree/554a95eaa70cfc0dc00abcdf89bfd5be6678b23a" target="_blank">554a95e</a>
+<a href="https://github.com/MawipM/Projekt_zaliczeniowy_MM/tree/c373e303c9ae0aae2dab4eba2f7353a57fca978c" target="_blank">c373e30</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomMawipMProjektzaliczeniowyMMtree554a95eaa70cfc0dc00abcdf89bfd5be6678b23atargetblank554a95ea"
+id="strongRepositoryversionstrongahrefhttpsgithubcomMawipMProjektzaliczeniowyMMtreec373e303c9ae0aae2dab4eba2f7353a57fca978ctargetblankc373e30a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -534,7 +534,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/MawipM/Projekt_zaliczeniowy_MM/tree/554a95eaa70cfc0dc00abcdf89bfd5be6678b23a" target="_blank">554a95e</a>.
+<a href="https://github.com/MawipM/Projekt_zaliczeniowy_MM/tree/c373e303c9ae0aae2dab4eba2f7353a57fca978c" target="_blank">c373e30</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -551,9 +551,12 @@ were generated:
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    analysis/prezentacja.html
 
 Untracked files:
+    Untracked:  analysis/prezentacja_files/
     Untracked:  analysis/uczelnia.jpg
+    Untracked:  docs/prezentacja_files/
 
 </code></pre>
 <p>
@@ -598,6 +601,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/MawipM/Projekt_zaliczeniowy_MM/blob/c373e303c9ae0aae2dab4eba2f7353a57fca978c/analysis/analiza.Rmd" target="_blank">c373e30</a>
+</td>
+<td>
+Maciej Malecki
+</td>
+<td>
+2026-01-10
+</td>
+<td>
+Analiza danych
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/MawipM/Projekt_zaliczeniowy_MM/d874b0e93dc39cc838f95f64db16fa3bce42ded7/analysis/docs/analiza.html" target="_blank">d874b0e</a>
+</td>
+<td>
+Maciej Malecki
+</td>
+<td>
+2026-01-09
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -690,109 +727,281 @@ Dodanie analizy
 </div>
 </div>
 </div>
-<div id="wstęp" class="section level2">
-<h2>Wstęp</h2>
-<p>W tej sekcji zajmiemy się analizą zbioru danych <code>mpg</code>,
-który jest dostępny w pakiecie <code>ggplot2</code>. Zbiór ten zawiera
-dane o zużyciu paliwa dla popularnych modeli samochodów z lat 1999 i
-2008.</p>
-<div id="wczytanie-pakietów" class="section level3">
-<h3>Wczytanie pakietów</h3>
-<p>Na początku wczytujemy niezbędne biblioteki.</p>
-<pre class="r"><code>library(tidyverse)
-library(ggplot2)
-
-# Przetwarzanie danych
-dane_auta &lt;- mpg %&gt;%
+<div id="opis-zbioru-danych" class="section level2">
+<h2>1. Opis zbioru danych</h2>
+<p>W niniejszej sekcji dokonujemy analizy zbioru danych
+<strong><code>mpg</code></strong>, który jest częścią pakietu
+<code>ggplot2</code>.</p>
+<p><strong>Co przedstawiają dane?</strong> Zbiór zawiera informacje o
+zużyciu paliwa dla 38 popularnych modeli samochodów produkowanych w
+latach 1999 oraz 2008.</p>
+<p>Główne zmienne użyte w analizie to: * <code>displ</code> – pojemność
+silnika (w litrach), * <code>year</code> – rok produkcji, *
+<code>cyl</code> – liczba cylindrów, * <code>hwy</code> – spalanie na
+autostradzie (mile na galon), * <code>class</code> – typ nadwozia (np.
+SUV, kompakt).</p>
+<hr />
+</div>
+<div id="przetwarzanie-danych-dplyr" class="section level2">
+<h2>2. Przetwarzanie danych (dplyr)</h2>
+<p>Zgodnie z wymaganiami projektu, wykonujemy szereg przekształceń
+danych, aby przygotować je do wizualizacji. Wykorzystujemy funkcje
+pakietu <code>dplyr</code>: <code>filter</code>, <code>mutate</code>,
+<code>group_by</code> oraz <code>summarise</code>.</p>
+<div id="wczytanie-bibliotek" class="section level3">
+<h3>Wczytanie bibliotek</h3>
+<pre class="r"><code>library(tidyverse) # Zawiera pakiety ggplot2, dplyr, tidyr</code></pre>
+</div>
+<div id="obliczenia-i-transformacje" class="section level3">
+<h3>Obliczenia i transformacje</h3>
+<p>W poniższym kodzie wykonujemy następujące kroki: 1.
+<strong><code>mutate</code></strong>: Tworzymy nową kolumnę
+<code>spalanie_l100km</code>, przeliczając amerykańskie mile na galon na
+europejskie litry na 100 km (wzór: <span class="math inline">\(235 /
+hwy\)</span>). 2. <strong><code>filter</code></strong>: Ograniczamy
+analizę tylko do nowszych samochodów (rok 2008). 3.
+<strong><code>group_by</code> i <code>summarise</code></strong>:
+Grupujemy dane po klasie samochodu i obliczamy średnie spalanie dla
+każdej grupy.</p>
+<pre class="r"><code># Krok 1: Tworzenie nowej zmiennej (wymaganie: mutate)
+dane_przeliczone &lt;- mpg %&gt;%
   mutate(spalanie_l100km = 235 / hwy)
 
-auta_2008 &lt;- dane_auta %&gt;%
+# Krok 2: Filtrowanie danych (wymaganie: filter)
+auta_2008 &lt;- dane_przeliczone %&gt;%
   filter(year == 2008)
 
-wyniki &lt;- auta_2008 %&gt;%
+# Krok 3: Agregacja danych (wymaganie: group_by, summarise)
+tabela_spalania &lt;- auta_2008 %&gt;%
   group_by(class) %&gt;%
-  summarise(srednie_spalanie = mean(spalanie_l100km)) %&gt;%
+  summarise(
+    srednie_spalanie = mean(spalanie_l100km),
+    liczba_aut = n()
+  ) %&gt;%
   arrange(desc(srednie_spalanie))
 
-knitr::kable(wyniki, caption = &quot;Średnie spalanie wg klasy auta&quot;)</code></pre>
+# Wyświetlenie tabeli wynikowej
+knitr::kable(tabela_spalania, caption = &quot;Tabela 1. Średnie spalanie (l/100km) w podziale na klasy aut&quot;)</code></pre>
 <table>
-<caption>Średnie spalanie wg klasy auta</caption>
+<caption>Tabela 1. Średnie spalanie (l/100km) w podziale na klasy
+aut</caption>
 <thead>
 <tr class="header">
 <th align="left">class</th>
 <th align="right">srednie_spalanie</th>
+<th align="right">liczba_aut</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left">pickup</td>
 <td align="right">14.287696</td>
+<td align="right">17</td>
 </tr>
 <tr class="even">
 <td align="left">suv</td>
 <td align="right">13.023141</td>
+<td align="right">33</td>
 </tr>
 <tr class="odd">
 <td align="left">minivan</td>
 <td align="right">10.768329</td>
+<td align="right">5</td>
 </tr>
 <tr class="even">
 <td align="left">2seater</td>
 <td align="right">9.410043</td>
+<td align="right">3</td>
 </tr>
 <tr class="odd">
 <td align="left">subcompact</td>
 <td align="right">8.907373</td>
+<td align="right">16</td>
 </tr>
 <tr class="even">
 <td align="left">midsize</td>
 <td align="right">8.445133</td>
+<td align="right">21</td>
 </tr>
 <tr class="odd">
 <td align="left">compact</td>
 <td align="right">8.262408</td>
+<td align="right">22</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+</div>
+<div id="wizualizacja-danych-ggplot2" class="section level2">
+<h2>3. Wizualizacja danych (ggplot2)</h2>
+<p>W tej części przedstawiamy graficzną interpretację wyników.</p>
+<div id="wykres-1-histogram-rozkład-zmiennej" class="section level3">
+<h3>Wykres 1: Histogram (Rozkład zmiennej)</h3>
+<p>Sprawdzamy, jak rozkłada się spalanie paliwa w badanej grupie
+samochodów z 2008 roku.</p>
+<pre class="r"><code>ggplot(auta_2008, aes(x = spalanie_l100km)) +
+  geom_histogram(binwidth = 1, fill = &quot;skyblue&quot;, color = &quot;black&quot;) +
+  labs(title = &quot;Rozkład spalania paliwa&quot;,
+       subtitle = &quot;Dane dla modeli z rocznika 2008&quot;,
+       x = &quot;Zużycie paliwa [l/100km]&quot;,
+       y = &quot;Liczba samochodów&quot;) +
+  theme_minimal()</code></pre>
+<p><img src="figure/analiza.Rmd/wykres_histogram-1.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-wykres_histogram-1">
+Past versions of wykres_histogram-1.png
+</button>
+</p>
+<div id="fig-wykres_histogram-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/MawipM/Projekt_zaliczeniowy_MM/blob/d874b0e93dc39cc838f95f64db16fa3bce42ded7/analysis/docs/figure/analiza.Rmd/wykres_histogram-1.png" target="_blank">d874b0e</a>
+</td>
+<td>
+Maciej Malecki
+</td>
+<td>
+2026-01-09
+</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="wykres-1-histogram-spalania" class="section level3">
-<h3>Wykres 1: Histogram spalania</h3>
-<pre class="r"><code>ggplot(auta_2008, aes(x = spalanie_l100km)) +
-  geom_histogram(binwidth = 1, fill = &quot;skyblue&quot;, color = &quot;black&quot;) +
-  labs(title = &quot;Rozkład spalania paliwa&quot;,
-       x = &quot;Litry na 100 km&quot;,
-       y = &quot;Liczba aut&quot;) +
-  theme_minimal()</code></pre>
-<p><img src="figure/analiza.Rmd/wykres_histogram-1.png" alt="" width="672" style="display: block; margin: auto;" /></p>
-<p><strong>Komentarz:</strong> Najwięcej aut spala w przedziale 8-12
-litrów na 100 km.</p>
 </div>
-<div id="wykres-2-liczebność-klas-samochodów" class="section level3">
-<h3>Wykres 2: Liczebność klas samochodów</h3>
+<p><strong>Komentarz interpretacyjny:</strong> Wykres pokazuje, że
+rozkład jest asymetryczny. Najwięcej samochodów spala w przedziale 8-10
+litrów na 100 km. Widoczna jest jednak grupa aut o bardzo wysokim
+spalaniu (powyżej 15 litrów), co sugeruje obecność dużych silników w
+zbiorze.</p>
+<hr />
+</div>
+<div id="wykres-2-wykres-słupkowy-liczebność-grup"
+class="section level3">
+<h3>Wykres 2: Wykres słupkowy (Liczebność grup)</h3>
+<p>Analizujemy, które klasy samochodów są najliczniej reprezentowane w
+naszych przefiltrowanych danych.</p>
 <pre class="r"><code>ggplot(auta_2008, aes(x = class)) +
   geom_bar(fill = &quot;darkblue&quot;) +
-  labs(title = &quot;Liczba aut w poszczególnych klasach&quot;,
-       x = &quot;Klasa&quot;,
-       y = &quot;Liczba&quot;) +
+  labs(title = &quot;Liczba samochodów w poszczególnych klasach&quot;,
+       x = &quot;Klasa samochodu&quot;,
+       y = &quot;Liczba sztuk&quot;) +
   theme_minimal()</code></pre>
 <p><img src="figure/analiza.Rmd/wykres_slupkowy-1.png" alt="" width="672" style="display: block; margin: auto;" /></p>
-<p><strong>Komentarz:</strong> W analizowanym roczniku dominuje klasa
-SUV.</p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-wykres_slupkowy-1">
+Past versions of wykres_slupkowy-1.png
+</button>
+</p>
+<div id="fig-wykres_slupkowy-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/MawipM/Projekt_zaliczeniowy_MM/blob/d874b0e93dc39cc838f95f64db16fa3bce42ded7/analysis/docs/figure/analiza.Rmd/wykres_slupkowy-1.png" target="_blank">d874b0e</a>
+</td>
+<td>
+Maciej Malecki
+</td>
+<td>
+2026-01-09
+</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="wykres-3-zależność-pojemności-silnika-od-klasy"
+</div>
+<p><strong>Komentarz interpretacyjny:</strong> Najliczniejszą grupą w
+roczniku 2008 są samochody typu <strong>SUV</strong>. Popularne są
+również samochody średniej wielkości (midsize). Najmniej liczne są
+samochody 2-osobowe (2seater) oraz minivany.</p>
+<hr />
+</div>
+<div id="wykres-3-boxplot-zależność-dwóch-zmiennych"
 class="section level3">
-<h3>Wykres 3: Zależność pojemności silnika od klasy</h3>
+<h3>Wykres 3: Boxplot (Zależność dwóch zmiennych)</h3>
+<p>Badamy zależność między klasą samochodu a pojemnością silnika.</p>
 <pre class="r"><code>ggplot(auta_2008, aes(x = class, y = displ, fill = class)) +
   geom_boxplot() +
   labs(title = &quot;Pojemność silnika a klasa auta&quot;,
-       x = &quot;Klasa&quot;,
+       x = &quot;Klasa samochodu&quot;,
        y = &quot;Pojemność silnika (litry)&quot;) +
   theme_minimal() +
-  theme(legend.position = &quot;none&quot;)</code></pre>
+  theme(legend.position = &quot;none&quot;) # Legenda jest zbędna przy opisanej osi X</code></pre>
 <p><img src="figure/analiza.Rmd/wykres_boxplot-1.png" alt="" width="672" style="display: block; margin: auto;" /></p>
-<p><strong>Komentarz:</strong> Samochody typu SUV i pickup mają
-największe silniki (mediana ok. 5 litrów), podczas gdy auta kompaktowe
-mają zazwyczaj silniki mniejsze (ok. 2-3 litry).</p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-wykres_boxplot-1">
+Past versions of wykres_boxplot-1.png
+</button>
+</p>
+<div id="fig-wykres_boxplot-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/MawipM/Projekt_zaliczeniowy_MM/blob/d874b0e93dc39cc838f95f64db16fa3bce42ded7/analysis/docs/figure/analiza.Rmd/wykres_boxplot-1.png" target="_blank">d874b0e</a>
+</td>
+<td>
+Maciej Malecki
+</td>
+<td>
+2026-01-09
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Komentarz interpretacyjny:</strong> Wykres pudełkowy wyraźnie
+pokazuje różnice w konstrukcjach aut. Samochody typu
+<strong>SUV</strong> oraz <strong>pickup</strong> charakteryzują się
+największymi silnikami (mediana około 5 litrów). Z kolei samochody
+kompaktowe i midsize mają zazwyczaj silniki mniejsze, oscylujące w
+granicach 2-3 litrów.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
