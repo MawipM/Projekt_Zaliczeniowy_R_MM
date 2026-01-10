@@ -54,6 +54,3 @@ editor_options:
 * Wizualizacja danych przy użyciu `ggplot2` (histogramy, boxploty).
 * Publikacja wyników przy użyciu `workflowr`.
 
-```{r, echo=FALSE}
-print(paste("CV wygenerowane automatycznie dnia:", Sys.Date()))
-```
