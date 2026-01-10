@@ -194,4 +194,4 @@ Do zobaczenia na trasie! 👋
 <br>
 
 **Repozytorium projektu:**
-[https://github.com/MawipM/Projekt_zaliczeniowy_MM](https://github.com/MawipM/Projekt_zaliczeniowy_MM)
+[https://github.com/MawipM/Projekt_Zaliczeniowy_R_MM](https://github.com/MawipM/Projekt_Zaliczeniowy_R_MM)
