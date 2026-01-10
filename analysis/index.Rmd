@@ -21,9 +21,3 @@ Niniejszy projekt został przygotowany w ramach zaliczenia przedmiotu Programowa
 
 ---
 
-### Informacje o projekcie
-
-Główne elementy projektu:
-1.  **CV** - moje doświadczenie i umiejętności.
-2.  **Analiza Danych** - praktyczne zastosowanie R (dplyr, ggplot2).
-3.  **Prezentacja** - moje pasje (wykonana w Quarto).
