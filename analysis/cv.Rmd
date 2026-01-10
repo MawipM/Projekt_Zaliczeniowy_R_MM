@@ -39,6 +39,7 @@ editor_options:
 
 ### Języki obce
 * **Angielski:** [C1]
+* **Niemiecki:** [B1]
 * **Polski:** Ojczysty
 
 ---
