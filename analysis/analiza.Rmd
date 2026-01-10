@@ -7,69 +7,117 @@ editor_options:
   chunk_output_type: console
 ---
 
-## Wstęp
+## 1. Opis zbioru danych
 
-W tej sekcji zajmiemy się analizą zbioru danych `mpg`, który jest dostępny w pakiecie `ggplot2`. Zbiór ten zawiera dane o zużyciu paliwa dla popularnych modeli samochodów z lat 1999 i 2008.
+W niniejszej sekcji dokonujemy analizy zbioru danych **`mpg`**, który jest częścią pakietu `ggplot2`.
 
-### Wczytanie pakietów
+**Co przedstawiają dane?**
+Zbiór zawiera informacje o zużyciu paliwa dla 38 popularnych modeli samochodów produkowanych w latach 1999 oraz 2008.
 
-Na początku wczytujemy niezbędne biblioteki.
+Główne zmienne użyte w analizie to:
+* `displ` – pojemność silnika (w litrach),
+* `year` – rok produkcji,
+* `cyl` – liczba cylindrów,
+* `hwy` – spalanie na autostradzie (mile na galon),
+* `class` – typ nadwozia (np. SUV, kompakt).
 
-```{r wczytanie_danych, message=FALSE, warning=FALSE}
-library(tidyverse)
-library(ggplot2)
+---
 
-# Przetwarzanie danych
-dane_auta <- mpg %>%
-  mutate(spalanie_l100km = 235 / hwy)
+## 2. Przetwarzanie danych (dplyr)
 
-auta_2008 <- dane_auta %>%
-  filter(year == 2008)
+Zgodnie z wymaganiami projektu, wykonujemy szereg przekształceń danych, aby przygotować je do wizualizacji. Wykorzystujemy funkcje pakietu `dplyr`: `filter`, `mutate`, `group_by` oraz `summarise`.
 
-wyniki <- auta_2008 %>%
-  group_by(class) %>%
-  summarise(srednie_spalanie = mean(spalanie_l100km)) %>%
-  arrange(desc(srednie_spalanie))
+### Wczytanie bibliotek
 
-knitr::kable(wyniki, caption = "Średnie spalanie wg klasy auta")
+```{r wczytanie_pakietow, message=FALSE, warning=FALSE}
+library(tidyverse) # Zawiera pakiety ggplot2, dplyr, tidyr
 ```
 
-### Wykres 1: Histogram spalania
+### Obliczenia i transformacje
+
+W poniższym kodzie wykonujemy następujące kroki:
+1.  **`mutate`**: Tworzymy nową kolumnę `spalanie_l100km`, przeliczając amerykańskie mile na galon na europejskie litry na 100 km (wzór: $235 / hwy$).
+2.  **`filter`**: Ograniczamy analizę tylko do nowszych samochodów (rok 2008).
+3.  **`group_by` i `summarise`**: Grupujemy dane po klasie samochodu i obliczamy średnie spalanie dla każdej grupy.
+
+```{r przetwarzanie_danych}
+# Krok 1: Tworzenie nowej zmiennej (wymaganie: mutate)
+dane_przeliczone <- mpg %>%
+  mutate(spalanie_l100km = 235 / hwy)
+
+# Krok 2: Filtrowanie danych (wymaganie: filter)
+auta_2008 <- dane_przeliczone %>%
+  filter(year == 2008)
+
+# Krok 3: Agregacja danych (wymaganie: group_by, summarise)
+tabela_spalania <- auta_2008 %>%
+  group_by(class) %>%
+  summarise(
+    srednie_spalanie = mean(spalanie_l100km),
+    liczba_aut = n()
+  ) %>%
+  arrange(desc(srednie_spalanie))
+
+# Wyświetlenie tabeli wynikowej
+knitr::kable(tabela_spalania, caption = "Tabela 1. Średnie spalanie (l/100km) w podziale na klasy aut")
+```
+
+---
+
+## 3. Wizualizacja danych (ggplot2)
+
+W tej części przedstawiamy graficzną interpretację wyników.
+
+### Wykres 1: Histogram (Rozkład zmiennej)
+
+Sprawdzamy, jak rozkłada się spalanie paliwa w badanej grupie samochodów z 2008 roku.
 
 ```{r wykres_histogram, message=FALSE, warning=FALSE}
 ggplot(auta_2008, aes(x = spalanie_l100km)) +
   geom_histogram(binwidth = 1, fill = "skyblue", color = "black") +
   labs(title = "Rozkład spalania paliwa",
-       x = "Litry na 100 km",
-       y = "Liczba aut") +
+       subtitle = "Dane dla modeli z rocznika 2008",
+       x = "Zużycie paliwa [l/100km]",
+       y = "Liczba samochodów") +
   theme_minimal()
 ```
 
-**Komentarz:** Najwięcej aut spala w przedziale 8-12 litrów na 100 km.
+**Komentarz interpretacyjny:**
+Wykres pokazuje, że rozkład jest asymetryczny. Najwięcej samochodów spala w przedziale 8-10 litrów na 100 km. Widoczna jest jednak grupa aut o bardzo wysokim spalaniu (powyżej 15 litrów), co sugeruje obecność dużych silników w zbiorze.
 
-### Wykres 2: Liczebność klas samochodów
+---
+
+### Wykres 2: Wykres słupkowy (Liczebność grup)
+
+Analizujemy, które klasy samochodów są najliczniej reprezentowane w naszych przefiltrowanych danych.
 
 ```{r wykres_slupkowy, message=FALSE, warning=FALSE}
 ggplot(auta_2008, aes(x = class)) +
   geom_bar(fill = "darkblue") +
-  labs(title = "Liczba aut w poszczególnych klasach",
-       x = "Klasa",
-       y = "Liczba") +
+  labs(title = "Liczba samochodów w poszczególnych klasach",
+       x = "Klasa samochodu",
+       y = "Liczba sztuk") +
   theme_minimal()
 ```
 
-**Komentarz:** W analizowanym roczniku dominuje klasa SUV.
+**Komentarz interpretacyjny:**
+Najliczniejszą grupą w roczniku 2008 są samochody typu **SUV**. Popularne są również samochody średniej wielkości (midsize). Najmniej liczne są samochody 2-osobowe (2seater) oraz minivany.
 
-### Wykres 3: Zależność pojemności silnika od klasy
+---
+
+### Wykres 3: Boxplot (Zależność dwóch zmiennych)
+
+Badamy zależność między klasą samochodu a pojemnością silnika.
 
 ```{r wykres_boxplot, message=FALSE, warning=FALSE}
 ggplot(auta_2008, aes(x = class, y = displ, fill = class)) +
   geom_boxplot() +
   labs(title = "Pojemność silnika a klasa auta",
-       x = "Klasa",
+       x = "Klasa samochodu",
        y = "Pojemność silnika (litry)") +
   theme_minimal() +
-  theme(legend.position = "none")
+  theme(legend.position = "none") # Legenda jest zbędna przy opisanej osi X
 ```
 
-**Komentarz:** Samochody typu SUV i pickup mają największe silniki (mediana ok. 5 litrów), podczas gdy auta kompaktowe mają zazwyczaj silniki mniejsze (ok. 2-3 litry).
+**Komentarz interpretacyjny:**
+Wykres pudełkowy wyraźnie pokazuje różnice w konstrukcjach aut. Samochody typu **SUV** oraz **pickup** charakteryzują się największymi silnikami (mediana około 5 litrów). Z kolei samochody kompaktowe i midsize mają zazwyczaj silniki mniejsze, oscylujące w granicach 2-3 litrów.
