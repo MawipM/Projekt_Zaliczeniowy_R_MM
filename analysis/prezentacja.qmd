@@ -10,6 +10,7 @@ format:
 editor: visual
 ---
 
+```{=html}
 <style>
 .reveal .slides {
     font-size: 31px; /* Zmniejszenie tekstu głównego */
@@ -22,11 +23,11 @@ editor: visual
     max-height: 600px;
 }
 </style>
+```
 
 ## 1. O mnie
 
-Cześć! Nazywam się Maciej.
-Wyznaję zasadę, że życie najlepiej mierzyć w przejechanych kilometrach, a nie w godzinach spędzonych w jednym miejscu.
+Cześć! Nazywam się Maciej. Wyznaję zasadę, że życie najlepiej mierzyć w przejechanych kilometrach, a nie w godzinach spędzonych w jednym miejscu.
 
 Prywatnie jestem niespokojnym duchem, który najlepiej czuje się w drodze. Uważam, że świat wygląda najpiękniej, gdy ogląda się go przez przednią szybę samochodu, a najlepszy plan to... brak planu.
 
@@ -34,11 +35,11 @@ Prywatnie jestem niespokojnym duchem, który najlepiej czuje się w drodze. Uwa�
 
 **Moje życie napędzają trzy główne żywioły:**
 
-* 🏁 **Motoryzacja** – miłość do techniki, dźwięku silnika i emocji za kierownicą.
-* 🌍 **Podróże** – ucieczka od codzienności w miejsca, których nie ma w przewodnikach.
-* 🚐 **Caravaning** – absolutna wolność i dom tam, gdzie akurat zaparkuję.
+-   🏁 **Motoryzacja** – miłość do techniki, dźwięku silnika i emocji za kierownicą.
+-   🌍 **Podróże** – ucieczka od codzienności w miejsca, których nie ma w przewodnikach.
+-   🚐 **Caravaning** – absolutna wolność i dom tam, gdzie akurat zaparkuję.
 
----
+------------------------------------------------------------------------
 
 ## 2. Motoryzacja: Adrenalina i Technika
 
@@ -46,15 +47,13 @@ Dla większości ludzi samochód to po prostu narzędzie do przemieszczania się
 
 <br>
 
-Fascynuje mnie dwoistość dzisiejszej motoryzacji.
-Z jednej strony kocham **surową, mechaniczną duszę klasyków** – zapach benzyny i dźwięk silnika, który czuć na kierownicy.
-Z drugiej – podziwiam **nowoczesną inżynierię**, gdzie aerodynamika i zaawansowane systemy pozwalają przesuwać granice fizyki.
+Fascynuje mnie dwoistość dzisiejszej motoryzacji. Z jednej strony kocham **surową, mechaniczną duszę klasyków** – zapach benzyny i dźwięk silnika, który czuć na kierownicy. Z drugiej – podziwiam **nowoczesną inżynierię**, gdzie aerodynamika i zaawansowane systemy pozwalają przesuwać granice fizyki.
 
 <br>
 
 Każde auto ma inny charakter, a zrozumienie go to największa frajda z jazdy.
 
----
+------------------------------------------------------------------------
 
 ## 3. Rzut oka na rok 2008
 
@@ -62,8 +61,7 @@ Dane, na których pracujemy, pochodzą z 2008 roku. To ciekawy moment w motoryza
 
 <br>
 
-Chciałem sprawdzić, jak wtedy wyglądał rynek. Czy podział był sztywny?
-Czyli: **Małe auto = mały silnik, Duże auto = duży silnik.**
+Chciałem sprawdzić, jak wtedy wyglądał rynek. Czy podział był sztywny? Czyli: **Małe auto = mały silnik, Duże auto = duży silnik.**
 
 <br>
 
@@ -73,7 +71,7 @@ Zamiast opierać się na wspomnieniach, wyciągnąłem twarde dane, żeby zobacz
 
 *(Spójrzmy na wykres wygenerowany w R)*
 
----
+------------------------------------------------------------------------
 
 ## 4. Wykres: Klasa auta a pojemność
 
@@ -98,7 +96,7 @@ ggplot(dane_wykres, aes(x = class, y = displ, fill = class)) +
         title = element_text(color = "white"))
 ```
 
----
+------------------------------------------------------------------------
 
 ## 4.1 Werdykt: Czy rozmiar ma znaczenie?
 
@@ -106,17 +104,17 @@ Wykres potwierdza, że w 2008 roku rynek był bezkompromisowy:
 
 <br>
 
-1. **Waga ciężka rządzi:** SUV-y i Pickupy to prawdziwe "krążowniki". Mediana pojemności ok. **5 litrów** wskazuje na dominację jednostek V8.
+1.  **Waga ciężka rządzi:** SUV-y i Pickupy to prawdziwe "krążowniki". Mediana pojemności ok. **5 litrów** wskazuje na dominację jednostek V8.
 
 <br>
 
-2. **Mały, ale wariat:** Spójrzcie na klasę **`2seater`** (czerwony słupek). To najmniejsze auta, a mają **największe silniki** (ponad 6L!). To typowe dla amerykańskich aut sportowych (np. Corvette) – czysta moc w lekkim nadwoziu.
+2.  **Mały, ale wariat:** Spójrzcie na klasę **`2seater`** (czerwony słupek). To najmniejsze auta, a mają **największe silniki** (ponad 6L!). To typowe dla amerykańskich aut sportowych (np. Corvette) – czysta moc w lekkim nadwoziu.
 
 <br>
 
-3. **Przepaść:** Widać wyraźną granicę między autami "do zabawy i pracy", a "zwykłymi" kompaktami (ok. 2.0-3.0L), które służą tylko do jazdy.
+3.  **Przepaść:** Widać wyraźną granicę między autami "do zabawy i pracy", a "zwykłymi" kompaktami (ok. 2.0-3.0L), które służą tylko do jazdy.
 
----
+------------------------------------------------------------------------
 
 ## 5. Podróże: Ucieczka od GPS
 
@@ -130,19 +128,17 @@ Nie interesują mnie hotele all-inclusive z basenem.
 
 Prawdziwa przygoda zaczyna się tam, gdzie kończy się równy asfalt, a nawigacja przestaje działać. Liczy się droga, a nie cel sam w sobie. Szukam miejsc, gdzie słychać ciszę, a nie tłum turystów.
 
----
+------------------------------------------------------------------------
 
 ## 6. Ulubione kierunki
 
 Często najlepsze widoki to te nieplanowane.
 
-<center>
-![](https://i.ytimg.com/vi/NnDBeQFy2As/maxresdefault.jpg){width=65%}
-</center>
+<center>![](https://i.ytimg.com/vi/NnDBeQFy2As/maxresdefault.jpg){width="65%"}</center>
 
 Każda wyprawa to nowa perspektywa. Odcięcie się od cyfrowego świata pozwala mi wrócić do życia z "naładowanymi akumulatorami".
 
----
+------------------------------------------------------------------------
 
 ## 7. Caravaning: Dom jest tam, gdzie parkujesz
 
@@ -154,35 +150,35 @@ To moja największa pasja odkąd pamiętam. Idealne połączenie miłości do cz
 
 <br>
 
-* **Hotel z milionem gwiazdek** – dosłownie, bo nocuję pod gołym niebem.
+-   **Hotel z milionem gwiazdek** – dosłownie, bo nocuję pod gołym niebem.
 
 <br>
 
-* **Mobilność** – jeśli widok mi się znudzi, przekręcam kluczyk i jadę dalej.
+-   **Mobilność** – jeśli widok mi się znudzi, przekręcam kluczyk i jadę dalej.
 
 <br>
 
-* **Minimalizm** – w trasie uczysz się, że do szczęścia potrzebujesz naprawdę niewiele.
+-   **Minimalizm** – w trasie uczysz się, że do szczęścia potrzebujesz naprawdę niewiele.
 
----
+------------------------------------------------------------------------
 
 ## 8. Vanlife: Wielka Pętla Europejska
 
 Oto definicja wolności w jednym obrazku.
 
 <center>
-![Dom na czterech kołach](https://polskicaravaning.pl/img/kampery/2968-i-7057-eb_1.jpg){width=50%}
+
+![Dom na czterech kołach](https://polskicaravaning.pl/img/kampery/2968-i-7057-eb_1.jpg){width="50%"}
+
 </center>
 
-Moim marzeniem jest **Grand Tour po Europie**.
-Chcę ruszyć z północy, obserwując zorzę polarną nad norweskimi fiordami, przejechać przez kręte alpejskie przełęcze, by na końcu wypić kawę w cieniu oliwnych drzew w słonecznej Toskanii. Bez pośpiechu i biletu powrotnego.
+Moim marzeniem jest **Grand Tour po Europie**. Chcę ruszyć z północy, obserwując zorzę polarną nad norweskimi fiordami, przejechać przez kręte alpejskie przełęcze, by na końcu wypić kawę w cieniu oliwnych drzew w słonecznej Toskanii. Bez pośpiechu i biletu powrotnego.
 
----
+------------------------------------------------------------------------
 
 ## 9. Podsumowanie
 
-Dziękuję za wspólną podróż!
-Mam nadzieję, że udało mi się pokazać Wam kawałek mojego świata – tego analogowego, pachnącego benzyną i lasem, który jest dla mnie idealną odskocznią od świata danych i kodu.
+Dziękuję za wspólną podróż! Mam nadzieję, że udało mi się pokazać Wam kawałek mojego świata – tego analogowego, pachnącego benzyną i lasem, który jest dla mnie idealną odskocznią od świata danych i kodu.
 
 <br>
 
@@ -194,5 +190,4 @@ Do zobaczenia na trasie! 👋
 
 <br>
 
-**Repozytorium projektu:**
-[https://github.com/MawipM/Projekt_Zaliczeniowy_R_MM](https://github.com/MawipM/Projekt_Zaliczeniowy_R_MM)
+**Repozytorium projektu:** <https://github.com/MawipM/Projekt_Zaliczeniowy_R_MM>
